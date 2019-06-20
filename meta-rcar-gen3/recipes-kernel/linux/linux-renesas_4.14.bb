@@ -56,6 +56,16 @@ SRC_URI_append = " \
     ${@base_conditional("USE_ADSP", "1", "${SUPPORT_ADSP_ASOC}", "", d)} \
 "
 
+# Add Device tree for xen
+SRC_URI_append = " \
+    file://0003-clk-shmobile-Hide-clock-for-SCIF2.patch \
+    file://Makefile-for-xen-dts.patch \
+    file://r8a7795-salvator-x-xen.dts;subdir=git/arch/${ARCH}/boot/dts/renesas \
+    file://r8a7795-h3ulcb-xen.dts;subdir=git/arch/${ARCH}/boot/dts/renesas \
+    file://r8a7796-m3ulcb-xen.dts;subdir=git/arch/${ARCH}/boot/dts/renesas \
+    file://fragment_be.cfg \
+"
+
 # Install USB3.0 firmware to rootfs
 USB3_FIRMWARE_V2 = "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/r8a779x_usb3_v2.dlmem;md5sum=645db7e9056029efa15f158e51cc8a11"
 USB3_FIRMWARE_V3 = "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/r8a779x_usb3_v3.dlmem;md5sum=687d5d42f38f9850f8d5a6071dca3109"
